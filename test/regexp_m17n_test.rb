@@ -9,4 +9,11 @@ class RegexpTest < MiniTest::Unit::TestCase
       assert(RegexpM17N.non_empty?('.'.encode(enc)))
     end
   end
+
+  def test_empty_string
+    Encoding.list.each do |enc|
+      next if enc.dummy?
+      assert(!RegexpM17N.non_empty?(''.encode(enc)))
+    end
+  end
 end
